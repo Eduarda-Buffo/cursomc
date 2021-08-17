@@ -10,10 +10,8 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.eduarda.cursomc.domain.Categoria;
-import com.eduarda.cursomc.domain.Pedido;
 import com.eduarda.cursomc.domain.Produto;
 import com.eduarda.cursomc.repositories.CategoriaRepository;
-import com.eduarda.cursomc.repositories.PedidoRepository;
 import com.eduarda.cursomc.repositories.ProdutoRepository;
 import com.eduarda.cursomc.services.esceptions.ObjectNotFoundException;
 
