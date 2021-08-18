@@ -10,7 +10,6 @@ import com.eduarda.cursomc.domain.ItemPedido;
 import com.eduarda.cursomc.domain.PagamentoComBoleto;
 import com.eduarda.cursomc.domain.Pedido;
 import com.eduarda.cursomc.domain.enums.EstadoPagamento;
-import com.eduarda.cursomc.repositories.ClienteRepository;
 import com.eduarda.cursomc.repositories.ItemPedidoRepository;
 import com.eduarda.cursomc.repositories.PagamentoRepository;
 import com.eduarda.cursomc.repositories.PedidoRepository;
@@ -37,6 +36,8 @@ public class PedidoService {
 	@Autowired
 	private ClienteService clienteService;
 
+	@Autowired
+	private EmailService emailService;
 	
 	public Pedido find(Integer id) {
 		 Optional<Pedido> obj = repo.findById(id);
@@ -63,7 +64,7 @@ public class PedidoService {
 			ip.setPedido(obj);
 		}
 		itemPedidoRepository.saveAll(obj.getItens());
-		System.out.println(obj);
+		emailService.sendOrderConfirmationEmail(obj);
 		return obj;
 	}
 	
